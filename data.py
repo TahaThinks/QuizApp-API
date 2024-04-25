@@ -1,3 +1,4 @@
+import requests
 question_data = [
     {
         "category": "Science: Computers",
@@ -100,3 +101,6 @@ question_data = [
         ]
     }
 ]
+
+request = requests.get(url="https://opentdb.com/api.php?amount=10")
+print(request)
