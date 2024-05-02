@@ -1,27 +1,34 @@
 from tkinter import *
+
 THEME_COLOR = "#375362"
+
 
 class QuizInterface:
     def __init__(self):
         self.window = Tk()
         self.window.title("Quizzler by Taha")
-        self.window.config(bg=THEME_COLOR)
+        self.window.config(bg=THEME_COLOR, padx=20, pady=20)
+
+        self.score_label = Label(text="Score: 0", fg="white", bg=THEME_COLOR)
+        self.score_label.grid(row=0, column=1)
 
         self.canvas = Canvas(width=300, height=250)
-        self.canvas.grid(row=0, column=0, columnspan=2)
+        self.question_text = self.canvas.create_text(
+            150,
+            125,
+            text="Question",
+            fill=THEME_COLOR,
+            font = ("Arial", 20, "italic")
+        )
+        self.canvas.grid(row=1, column=0, columnspan=2, pady=20)
 
-        photo1 = PhotoImage(file="images/true.png")
-        photo2 = PhotoImage(file="images/false.png")
+        true_image = PhotoImage(file="images/true.png")
+        false_image = PhotoImage(file="images/false.png")
 
-        self.button1 = Button(image=photo1)
-        self.button2 = Button(image=photo2)
+        self.true_button = Button(image=true_image, highlightthickness=0)
+        self.false_button = Button(image=false_image, highlightthickness=0)
 
-        self.button1.grid(row=1, column=0)
-        self.button2.grid(row=1, column=1)
-
-
-
-
-
+        self.true_button.grid(row=2, column=0, padx=20, pady=20)
+        self.false_button.grid(row=2, column=1, padx=20, pady=20)
 
         self.window.mainloop()
